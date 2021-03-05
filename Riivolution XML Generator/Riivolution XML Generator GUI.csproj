@@ -5,6 +5,7 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <RootNamespace>Riivolution_XML_Generator</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
+    <StartupObject>Riivolution_XML_Generator.Program</StartupObject>
   </PropertyGroup>
 
 </Project>

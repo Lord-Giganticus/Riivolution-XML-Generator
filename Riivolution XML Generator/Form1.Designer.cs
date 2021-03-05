@@ -132,11 +132,12 @@ namespace Riivolution_XML_Generator
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(406, 142);
+            this.label7.Location = new System.Drawing.Point(435, 142);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(320, 15);
+            this.label7.Size = new System.Drawing.Size(229, 30);
             this.label7.TabIndex = 12;
-            this.label7.Text = "Folder Path: (Relative to root:\\Riivolution. DO NOT ENTER \\)";
+            this.label7.Text = "Folder Path: (Relative to root:\\Riivolution.)\r\n(DO NOT ENTER \\ INTO THE TEXTBOX!)" +
+    "";
             // 
             // textBox5
             // 

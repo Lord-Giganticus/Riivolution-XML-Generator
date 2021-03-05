@@ -4,6 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>Riivolution_XML_Generator_Command_Line</RootNamespace>
+    <StartupObject>Riivolution_XML_Generator_Command_Line.Program</StartupObject>
   </PropertyGroup>
 
 </Project>
