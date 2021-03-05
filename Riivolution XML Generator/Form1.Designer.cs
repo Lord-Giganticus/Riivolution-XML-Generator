@@ -38,8 +38,6 @@ namespace Riivolution_XML_Generator
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -115,26 +113,6 @@ namespace Riivolution_XML_Generator
             this.textBox3.Size = new System.Drawing.Size(187, 23);
             this.textBox3.TabIndex = 7;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(493, 142);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(119, 15);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Is the mod enabeled?";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
-            this.comboBox1.Location = new System.Drawing.Point(508, 173);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(92, 23);
-            this.comboBox1.TabIndex = 9;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -154,22 +132,22 @@ namespace Riivolution_XML_Generator
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(443, 222);
+            this.label7.Location = new System.Drawing.Point(406, 142);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(233, 15);
+            this.label7.Size = new System.Drawing.Size(320, 15);
             this.label7.TabIndex = 12;
-            this.label7.Text = "Folder Path: (Relative to Riivolution folder.)";
+            this.label7.Text = "Folder Path: (Relative to root:\\Riivolution. DO NOT ENTER \\)";
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(481, 254);
+            this.textBox5.Location = new System.Drawing.Point(481, 174);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(156, 23);
             this.textBox5.TabIndex = 13;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(304, 317);
+            this.button1.Location = new System.Drawing.Point(481, 252);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(151, 24);
             this.button1.TabIndex = 14;
@@ -181,14 +159,12 @@ namespace Riivolution_XML_Generator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 295);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox2);
@@ -218,8 +194,6 @@ namespace Riivolution_XML_Generator
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label7;
