@@ -1,2 +1,2 @@
 # Riivolution-XML-Generator
-A GUI aplication to make xml files for Riivolution.
+GUI and Console Line applications to make xml files for Riivolution.
