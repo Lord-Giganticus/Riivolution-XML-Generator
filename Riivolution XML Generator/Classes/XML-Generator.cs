@@ -19,9 +19,12 @@ namespace Riivolution_XML_Generator.Classes
         /// <param name="fp">The path to the folder containing the mods.</param>
         public static void Generate(string Game_ID, string RGN, string opiton_name, string PID, string fp)
         {
-            if (fp.StartsWith(@"\") == false)
+            if (fp.StartsWith("/") == false)
             {
-                fp = @"\" + fp;
+                fp = "/" + fp;
+            } else
+            {
+                //pass
             }
             string[] lines =
             {
