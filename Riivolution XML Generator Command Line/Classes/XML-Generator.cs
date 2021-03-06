@@ -15,7 +15,7 @@ namespace Riivolution_XML_Generator.Classes
         /// <param name="RGN">Riivolution Page Name.</param>
         /// <param name="opiton_name">The name of the option</param>
         /// <param name="PID">The name of the Patch ID</param>
-        /// <param name="fp">The path to the folder containing the mods. (Releative to root:\Riivolution)</param>
+        /// <param name="fp">The path to the folder containing the mods.</param>
         /// <param name="fn">The path\name of the file.</param>
         public static void Generate(string Game_ID, string RGN, string opiton_name, string PID, string fp, string fn)
         {
