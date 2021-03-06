@@ -78,6 +78,7 @@ namespace Riivolution_XML_Generator
             // 
             this.textBox1.Location = new System.Drawing.Point(76, 92);
             this.textBox1.Name = "textBox1";
+            this.textBox1.PlaceholderText = "RMCE";
             this.textBox1.Size = new System.Drawing.Size(187, 23);
             this.textBox1.TabIndex = 3;
             // 
@@ -94,6 +95,7 @@ namespace Riivolution_XML_Generator
             // 
             this.textBox2.Location = new System.Drawing.Point(470, 90);
             this.textBox2.Name = "textBox2";
+            this.textBox2.PlaceholderText = "Testing";
             this.textBox2.Size = new System.Drawing.Size(167, 23);
             this.textBox2.TabIndex = 5;
             // 
@@ -110,6 +112,7 @@ namespace Riivolution_XML_Generator
             // 
             this.textBox3.Location = new System.Drawing.Point(75, 173);
             this.textBox3.Name = "textBox3";
+            this.textBox3.PlaceholderText = "Test Mods";
             this.textBox3.Size = new System.Drawing.Size(187, 23);
             this.textBox3.TabIndex = 7;
             // 
@@ -126,6 +129,7 @@ namespace Riivolution_XML_Generator
             // 
             this.textBox4.Location = new System.Drawing.Point(74, 254);
             this.textBox4.Name = "textBox4";
+            this.textBox4.PlaceholderText = "mod1";
             this.textBox4.Size = new System.Drawing.Size(188, 23);
             this.textBox4.TabIndex = 11;
             // 
@@ -142,7 +146,7 @@ namespace Riivolution_XML_Generator
             // 
             this.textBox5.Location = new System.Drawing.Point(481, 174);
             this.textBox5.Name = "textBox5";
-            this.textBox5.PlaceholderText = "/riivolution";
+            this.textBox5.PlaceholderText = "/mkwii";
             this.textBox5.Size = new System.Drawing.Size(156, 23);
             this.textBox5.TabIndex = 13;
             // 
