@@ -6,5 +6,15 @@
     <RootNamespace>Riivolution_XML_Generator_Command_Line</RootNamespace>
     <StartupObject>Riivolution_XML_Generator_Command_Line.Program</StartupObject>
   </PropertyGroup>
+	<PropertyGroup>
+		<Authors>Lord-Giganticus</Authors>
+		<PackageId>Riivolution XML Generator Command Line</PackageId>
+		<Version>1.0.0.3</Version>
+		<AssemblyVersion>1.0.0.3</AssemblyVersion>
+		<FileVersion>1.0.0.3</FileVersion>
+	</PropertyGroup>
+	<PropertyGroup>
+		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+	</PropertyGroup>
 
 </Project>
