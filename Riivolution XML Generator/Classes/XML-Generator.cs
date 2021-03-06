@@ -47,7 +47,7 @@ namespace Riivolution_XML_Generator.Classes
             };
             SaveFileDialog saveDialog = new SaveFileDialog
             {
-                InitialDirectory = Directory.GetCurrentDirectory(),
+                InitialDirectory = Drive_Check.Check(),
                 FileName = Game_ID,
                 DefaultExt = ".xml",
                 Filter = "Riivolution XML file|*.xml"
