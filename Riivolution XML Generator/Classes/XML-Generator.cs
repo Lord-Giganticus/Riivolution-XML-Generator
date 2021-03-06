@@ -19,6 +19,10 @@ namespace Riivolution_XML_Generator.Classes
         /// <param name="fp">The path to the folder containing the mods. (Releative to root:\Riivolution)</param>
         public static void Generate(string Game_ID, string RGN, string opiton_name, string PID, string fp)
         {
+            if (fp.StartsWith(@"\") == false)
+            {
+                fp = @"\" + fp;
+            }
             string[] lines =
             {
                 "<wiidisc version=\"1\">",
@@ -33,16 +37,18 @@ namespace Riivolution_XML_Generator.Classes
                 "\t\t</section>",
                 "\t</options>",
                 "\t<patch id=\""+PID+"\">",
-                "\t<folder external=\"/"+fp+"\" recursive=\"false\" />",
-                "\t\t<folder external=\"/"+fp+"\" disc=\"/\" />",
+                "\t<folder external=\""+fp+"\" recursive=\"false\" />",
+                "\t\t<folder external=\""+fp+"\" disc=\"/\" />",
                 "\t</patch>",
                 "</wiidisc>"
             };
-            SaveFileDialog saveDialog = new SaveFileDialog();
-            saveDialog.InitialDirectory = Directory.GetCurrentDirectory();
-            saveDialog.FileName = Game_ID;
-            saveDialog.DefaultExt = ".xml";
-            saveDialog.Filter = "Riivolution XML file|*.xml";
+            SaveFileDialog saveDialog = new SaveFileDialog
+            {
+                InitialDirectory = Directory.GetCurrentDirectory(),
+                FileName = Game_ID,
+                DefaultExt = ".xml",
+                Filter = "Riivolution XML file|*.xml"
+            };
             DialogResult result = saveDialog.ShowDialog();
             if (result == DialogResult.OK)
             {

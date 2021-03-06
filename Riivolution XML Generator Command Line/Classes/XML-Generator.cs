@@ -33,8 +33,8 @@ namespace Riivolution_XML_Generator.Classes
                 "\t\t</section>",
                 "\t</options>",
                 "\t<patch id=\""+PID+"\">",
-                "\t<folder external=\"/"+fp+"\" recursive=\"false\" />",
-                "\t\t<folder external=\"/"+fp+"\" disc=\"/\" />",
+                "\t<folder external=\""+fp+"\" recursive=\"false\" />",
+                "\t\t<folder external=\""+fp+"\" disc=\"/\" />",
                 "\t</patch>",
                 "</wiidisc>"
             };

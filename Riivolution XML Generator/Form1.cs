@@ -44,11 +44,16 @@ namespace Riivolution_XML_Generator
                 MessageBox.Show("Please enter the Folder Path!",warning,mbb,mbi);
                 return;
             }
+
             string gameid = textBox1.Text;
             string rgp = textBox2.Text;
             string on = textBox3.Text;
             string pid = textBox4.Text;
             string fp = textBox5.Text;
+            if (fp.StartsWith(@"\") == false)
+            {
+                fp = @"\" + fp;
+            }
             Classes.XML_Generator.Generate(gameid, rgp, on, pid, fp);
             MessageBox.Show("Finshed! Press ok to exit.", "Complete",MessageBoxButtons.OK,MessageBoxIcon.Information);
             Close();
