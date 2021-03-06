@@ -2,6 +2,9 @@
 
 namespace Riivolution_XML_Generator.Classes
 {
+    /// <summary>
+    /// A simple class to check mounted drives.
+    /// </summary>
     class Drive_Check
     {
         /// <summary>
