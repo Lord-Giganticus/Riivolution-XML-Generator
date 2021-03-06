@@ -14,20 +14,26 @@ namespace Riivolution_XML_Generator.Classes
         public static string Check()
         {
             string starting_point = Directory.GetCurrentDirectory();
-            DriveInfo[] allDrives = DriveInfo.GetDrives();
+            string[] drives = Directory.GetLogicalDrives();
             string folder = "";
-            foreach (DriveInfo d in allDrives)
+            foreach (string d in drives)
             {
-                if (d.IsReady == true)
+                try
                 {
-                    Directory.SetCurrentDirectory(d.VolumeLabel);
-                    if (Directory.Exists("riivolution"))
-                    {
-                        folder = d.VolumeLabel + "riivolution";
-                        Directory.SetCurrentDirectory(starting_point);
-                        break;
-                    }
+                    Directory.SetCurrentDirectory(d);
+                    goto Check;
+                } catch
+                {
+                    goto loop;
                 }
+            Check:
+                if (Directory.Exists("riivolution"))
+                {
+                    folder = d + "riivolution";
+                    Directory.SetCurrentDirectory(starting_point);
+                    break;
+                }
+            loop:;
             }
             if (!folder.EndsWith("riivolution"))
             {
