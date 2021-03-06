@@ -48,7 +48,7 @@ namespace Riivolution_XML_Generator
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(210, 18);
+            this.linkLabel1.Location = new System.Drawing.Point(177, 24);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(347, 15);
             this.linkLabel1.TabIndex = 0;
@@ -59,7 +59,7 @@ namespace Riivolution_XML_Generator
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(274, 3);
+            this.label1.Location = new System.Drawing.Point(241, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(220, 15);
             this.label1.TabIndex = 1;
@@ -164,7 +164,7 @@ namespace Riivolution_XML_Generator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 295);
+            this.ClientSize = new System.Drawing.Size(673, 295);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label7);
