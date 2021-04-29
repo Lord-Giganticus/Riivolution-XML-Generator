@@ -22,25 +22,25 @@ namespace Riivolution_XML_Generator.Classes
             string[] lines =
             {
                 "<wiidisc version=\"1\">",
-                "\t<id game=\""+Game_ID+"\" />",
+                $"\t<id game=\"{Game_ID}\" />",
                 "\t<options>",
-                "\t\t<section name=\""+RGN+"\">",
-                "\t\t\t<option name=\""+opiton_name+"\">",
+                $"\t\t<section name=\"{RGN}\">",
+                $"\t\t\t<option name=\"{opiton_name}\">",
                 "\t\t\t\t<choice name=\"Enabled\">",
-                "\t\t\t\t\t<patch id=\""+PID+"\" />",
+                $"\t\t\t\t\t<patch id=\"{PID}\" />",
                 "\t\t\t\t</choice>",
                 "\t\t\t</option>",
                 "\t\t</section>",
                 "\t</options>",
-                "\t<patch id=\""+PID+"\">",
-                "\t<folder external=\""+fp+"\" recursive=\"false\" />",
-                "\t\t<folder external=\""+fp+"\" disc=\"/\" />",
+                $"\t<patch id=\"{PID}\">",
+                $"\t<folder external=\"{fp}\" recursive=\"false\" />",
+                $"\t\t<folder external=\"{fp}\" disc=\"/\" />",
                 "\t</patch>",
                 "</wiidisc>"
             };
             if (!fn.EndsWith(".xml"))
             {
-                fn = fn + ".xml";
+                fn += ".xml";
             }
             string fileName = fn;
             File.WriteAllLines(fileName, lines, Encoding.UTF8);

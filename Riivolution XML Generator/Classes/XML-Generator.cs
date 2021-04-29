@@ -29,19 +29,19 @@ namespace Riivolution_XML_Generator.Classes
             string[] lines =
             {
                 "<wiidisc version=\"1\">",
-                "\t<id game=\""+Game_ID+"\" />",
+                $"\t<id game=\"{Game_ID}\" />",
                 "\t<options>",
-                "\t\t<section name=\""+RGN+"\">",
-                "\t\t\t<option name=\""+opiton_name+"\">",
+                $"\t\t<section name=\"{RGN}\">",
+                $"\t\t\t<option name=\"{opiton_name}\">",
                 "\t\t\t\t<choice name=\"Enabled\">",
-                "\t\t\t\t\t<patch id=\""+PID+"\" />",
+                $"\t\t\t\t\t<patch id=\"{PID}\" />",
                 "\t\t\t\t</choice>",
                 "\t\t\t</option>",
                 "\t\t</section>",
                 "\t</options>",
-                "\t<patch id=\""+PID+"\">",
-                "\t<folder external=\""+fp+"\" recursive=\"false\" />",
-                "\t\t<folder external=\""+fp+"\" disc=\"/\" />",
+                $"\t<patch id=\"{PID}\">",
+                $"\t<folder external=\"{fp}\" recursive=\"false\" />",
+                $"\t\t<folder external=\"{fp}\" disc=\"/\" />",
                 "\t</patch>",
                 "</wiidisc>"
             };
@@ -50,7 +50,10 @@ namespace Riivolution_XML_Generator.Classes
                 InitialDirectory = Drive_Check.Check(),
                 FileName = Game_ID,
                 DefaultExt = ".xml",
-                Filter = "Riivolution XML file|*.xml"
+                Filter = "Riivolution XML file|*.xml",
+                FilterIndex = 1,
+                CheckPathExists = true,
+                Title = "Save the new xml file"
             };
             DialogResult result = saveDialog.ShowDialog();
             if (result == DialogResult.OK)

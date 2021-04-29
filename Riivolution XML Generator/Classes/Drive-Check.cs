@@ -40,7 +40,7 @@ namespace Riivolution_XML_Generator.Classes
                 folder = starting_point;
             } else
             {
-                //pass
+                folder = Directory.GetCurrentDirectory();
             }
             return folder;
         }
