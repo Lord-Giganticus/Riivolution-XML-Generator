@@ -17,7 +17,7 @@ namespace Riivolution_XML_Generator.Classes
         /// <param name="opiton_name">The name of the option</param>
         /// <param name="PID">The name of the Patch ID</param>
         /// <param name="fp">The path to the folder containing the mods.</param>
-        public static void Generate(string Game_ID, string Localize, string opiton_name, string PatchID, string FolderPath, string Region, string Section_Name, string Choice_Name, string[] comboBox1, string[] comboBox2, string[] comboBox3, string[] comboBox4, string[] comboBox5, string[] comboBox6)
+        public static void Generate(string Game_ID, string Localize, string opiton_name, string PatchID, string FolderPath, string Region, string Section_Name, string Choice_Name)
         {
             if (FolderPath.StartsWith("/") == false)
             {
