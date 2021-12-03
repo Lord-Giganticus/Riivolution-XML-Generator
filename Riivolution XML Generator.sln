@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31019.35
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Riivolution XML Generator GUI", "Riivolution XML Generator\Riivolution XML Generator GUI.csproj", "{AEFC84D4-CD7C-4277-B08D-956EB2598500}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riivolution XML Generator Command Line", "Riivolution XML Generator Command Line\Riivolution XML Generator Command Line.csproj", "{4491B345-784A-472A-B644-8046C80EC5BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Riivolution XML Generator Command Line", "Riivolution XML Generator Command Line\Riivolution XML Generator Command Line.csproj", "{4491B345-784A-472A-B644-8046C80EC5BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLUtil", "XMLUtil\XMLUtil.csproj", "{5E24B291-F554-49F3-B413-20CE90BFE8DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{4491B345-784A-472A-B644-8046C80EC5BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4491B345-784A-472A-B644-8046C80EC5BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4491B345-784A-472A-B644-8046C80EC5BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E24B291-F554-49F3-B413-20CE90BFE8DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E24B291-F554-49F3-B413-20CE90BFE8DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E24B291-F554-49F3-B413-20CE90BFE8DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E24B291-F554-49F3-B413-20CE90BFE8DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
