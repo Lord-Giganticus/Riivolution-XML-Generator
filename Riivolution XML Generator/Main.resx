@@ -57,8 +57,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing.Common" name="System.Drawing.Common, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" />
-  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIAAAAAwCAMAAADuKoKMAAAABGdBTUEAALGPC/xhBQAAAwBQTFRFcRsb
         lSUlmSUlcnFxlWdnS0VEu7i4dHR0iWRkUVFRZhkZKSkpnIyMUj4+CQgIiklJU01NaWlpZWVlVVVVbm1u
@@ -146,7 +146,7 @@
         QmCC
 </value>
   </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAIAwAAAEAIABYBgAAFgAAACgAAAAgAAAAGAAAAAEAIAAAAAAAAAYAAAAAAAAAAAAAAAAAAAAA
         AAAlJZ7/JSWe/yUlnv8lJZ7/JSWe/yUlnv8kJJ7/NDSc/15efP9KSkr/SUpK/0pKS/9KSkr/SUpK/0lJ
