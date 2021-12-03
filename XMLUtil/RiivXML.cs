@@ -17,7 +17,7 @@ namespace XMLUtil
         public RiivXML()
         {
             Document = new XmlDocument();
-            var node = Document.CreateElement("wiidisk");
+            var node = Document.CreateElement("wiidisc");
             var attribute = Document.CreateAttribute("version");
             attribute.Value = "1";
             node.Attributes.Append(attribute);
@@ -39,22 +39,46 @@ namespace XMLUtil
             node.AppendChild(innernode);
         }
 
-        public Patch CreatePatch(string name)
+        public void SetNameAndRegions(string name)
+        {
+            var node = Document.ChildNodes[0];
+            var game = Document.CreateElement("id");
+            game.SetAttribute("game", name);
+            foreach (var region in Extensions.GetEnumValues<Region>())
+            {
+                var innernode = Document.CreateElement("region");
+                innernode.SetAttribute("type", region.ToString());
+                game.AppendChild(innernode);
+            }
+            node.AppendChild(game);
+        }
+
+        public Patch CreatePatch(string name, string rootfile = null)
         {
             Patches.Add(new Patch
             {
                 Name = name,
                 FolderPatches = new List<FolderPatch>(),
                 MemoryPatches = new List<MemoryPatch>(),
-                SavePatch = null
+                RootFile = rootfile
             });
             return Patches.Last();
         }
 
-        public override string ToString()
+        public void UpdateDocument()
         {
             Document.ChildNodes[0].AppendChild(options.ToElement(ref Document));
             Patches.ForEach(x => Document.ChildNodes[0].AppendChild(x.ToElement(ref Document)));
+        }
+
+        public XmlElement[] GetPatchElements()
+        {
+            return Document.ChildNodes[0].ChildNodes.Cast<XmlElement>().
+                Where(x => x.Name is "patch").ToArray();
+        }
+
+        public override string ToString()
+        {
             var res = Document.Beautify();
             var lines = res.Split(new string[] { Environment.NewLine }, 0).ToList();
             lines.RemoveAt(0);
@@ -159,7 +183,7 @@ namespace XMLUtil
 
             public List<MemoryPatch> MemoryPatches;
 
-            public SavePatch? SavePatch;
+            public string RootFile;
 
             public FolderPatch CreateFolderPatch(string external, string disk = null, bool? recursive = null, bool? create = null)
             {
@@ -180,6 +204,23 @@ namespace XMLUtil
                     Offset = offset,
                     Value = value,
                     Original = original,
+                    Region = null,
+                    ValueFile = null,
+                };
+                if (region != null)
+                    m.Region = (Region)(byte)region;
+                MemoryPatches.Add(m);
+                return MemoryPatches.Last();
+            }
+
+            public MemoryPatch CreateMemoryPatch(uint offset, string valuefile, byte? region = null)
+            {
+                var m = new MemoryPatch
+                {
+                    Offset = offset,
+                    ValueFile = valuefile,
+                    Value = null,
+                    Original = null,
                     Region = null
                 };
                 if (region != null)
@@ -188,27 +229,12 @@ namespace XMLUtil
                 return MemoryPatches.Last();
             }
 
-            public SavePatch CreateSavePatch(string external, bool clone)
-            {
-                SavePatch = new SavePatch
-                {
-                    External = external,
-                    Clone = clone
-                };
-                return (SavePatch)SavePatch;
-            }
-
             internal XmlElement ToElement(ref XmlDocument xml)
             {
                 var node = xml.CreateElement("patch");
                 node.SetAttribute("id", Name);
-                if (SavePatch != null)
-                {
-                    var save = xml.CreateElement("savegame");
-                    save.SetAttribute("external", ((SavePatch)SavePatch).External);
-                    save.SetAttribute("clone", ((SavePatch)SavePatch).Clone.ToString().ToLower());
-                    node.AppendChild(save);
-                }
+                if (RootFile != null)
+                    node.SetAttribute("root", RootFile);
                 foreach (var folderpatch in FolderPatches)
                 {
                     var f = xml.CreateElement("folder");
@@ -234,8 +260,14 @@ namespace XMLUtil
                 {
                     var m = xml.CreateElement("memory");
                     m.SetAttribute("offset", $"0x{memorypatch.Offset:X}");
-                    m.SetAttribute("value", memorypatch.Value);
-                    m.SetAttribute("original", memorypatch.Original);
+                    if (memorypatch.ValueFile is null)
+                    {
+                        m.SetAttribute("value", memorypatch.Value);
+                        m.SetAttribute("original", memorypatch.Original);
+                    } else
+                    {
+                        m.SetAttribute("valuefile", memorypatch.ValueFile);
+                    }
                     if (memorypatch.Region != null)
                         m.SetAttribute("target", ((Region)memorypatch.Region).ToString());
                     node.AppendChild(m);
@@ -263,6 +295,8 @@ namespace XMLUtil
 
             public string Original;
 
+            public string ValueFile;
+
             public Region? Region;
         }
 
@@ -273,13 +307,6 @@ namespace XMLUtil
             K = 75,
             P = 80,
             W = 87
-        }
-
-        public struct SavePatch
-        {
-            public string External;
-
-            public bool Clone;
         }
         #endregion
         #endregion
