@@ -60,7 +60,8 @@ namespace XMLUtil
                 Name = name,
                 FolderPatches = new List<FolderPatch>(),
                 MemoryPatches = new List<MemoryPatch>(),
-                RootFile = rootfile
+                RootFile = rootfile,
+                SaveGamePatches = new List<SaveGamePatch>()
             });
             return Patches.Last();
         }
@@ -76,9 +77,13 @@ namespace XMLUtil
             return Document.ChildNodes[0].ChildNodes.Cast<XmlElement>().
                 Where(x => x.Name is "patch").ToArray();
         }
-
-        public override string ToString()
+        /// <summary>
+        /// <inheritdoc cref="object.ToString"/>
+        /// </summary>
+        public string ToString(bool update = false)
         {
+            if (update)
+                UpdateDocument();
             var res = Document.Beautify();
             var lines = res.Split(new string[] { Environment.NewLine }, 0).ToList();
             lines.RemoveAt(0);
@@ -185,6 +190,8 @@ namespace XMLUtil
 
             public string RootFile;
 
+            public List<SaveGamePatch> SaveGamePatches;
+
             public FolderPatch CreateFolderPatch(string external, string disk = null, bool? recursive = null, bool? create = null)
             {
                 FolderPatches.Add(new FolderPatch
@@ -229,12 +236,29 @@ namespace XMLUtil
                 return MemoryPatches.Last();
             }
 
+            public SaveGamePatch CreateSaveGamePatch(string external, bool clone)
+            {
+                SaveGamePatches.Add(new SaveGamePatch
+                {
+                    External = external,
+                    Clone = clone
+                });
+                return SaveGamePatches.Last();
+            }
+
             internal XmlElement ToElement(ref XmlDocument xml)
             {
                 var node = xml.CreateElement("patch");
                 node.SetAttribute("id", Name);
                 if (RootFile != null)
                     node.SetAttribute("root", RootFile);
+                foreach (var savegame in SaveGamePatches)
+                {
+                    var s = xml.CreateElement("savegame");
+                    s.SetAttribute("external", savegame.External);
+                    s.SetAttribute("clone", savegame.Clone.ToString().ToLower());
+                    node.AppendChild(s);
+                }
                 foreach (var folderpatch in FolderPatches)
                 {
                     var f = xml.CreateElement("folder");
@@ -298,6 +322,13 @@ namespace XMLUtil
             public string ValueFile;
 
             public Region? Region;
+        }
+
+        public struct SaveGamePatch
+        {
+            public string External;
+
+            public bool Clone;
         }
 
         public enum Region : byte
