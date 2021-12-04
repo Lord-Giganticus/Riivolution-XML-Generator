@@ -8,10 +8,7 @@ namespace Riivolution_XML_Generator
         public Main()
         {
             InitializeComponent();
-        }
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Classes.Open.Url(linkLabel1.Text);
+            CenterToScreen();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -21,36 +18,86 @@ namespace Riivolution_XML_Generator
             string warning = "Warning";
             if (textBox1.Text.Trim() == string.Empty)
             {
-                MessageBox.Show("Please enter the Game ID!",warning,mbb,mbi);
+                MessageBox.Show("Please enter the Game ID!", warning, mbb, mbi);
                 return;
             }
             if (textBox2.Text.Trim() == string.Empty)
             {
-                MessageBox.Show("Please enter the Riivolution Page name!",warning,mbb,mbi);
-                return;
-            } 
+                //MessageBox.Show("Please enter the Riivolution Page name!",warning,mbb,mbi);
+                //return;
+            }
             if (textBox3.Text.Trim() == string.Empty)
             {
-                MessageBox.Show("Please enter the Option name!",warning,mbb,mbi);
+                MessageBox.Show("Please enter the Option name!", warning, mbb, mbi);
                 return;
-            } 
+            }
             if (textBox4.Text.Trim() == string.Empty)
             {
-                MessageBox.Show("Please enter the Patch ID!",warning,mbb,mbi);
+                MessageBox.Show("Please enter the Patch ID!", warning, mbb, mbi);
                 return;
             }
             if (textBox5.Text.Trim() == string.Empty)
             {
-                MessageBox.Show("Please enter the Folder Path!",warning,mbb,mbi);
+                MessageBox.Show("Please enter the Folder Path!", warning, mbb, mbi);
+                return;
+            }
+            if (textBox6.Text.Trim() == string.Empty)
+            {
+                MessageBox.Show("Please enter the Game Region", warning, mbb, mbi);
+                return;
+            }
+            if (textBox7.Text.Trim() == string.Empty)
+            {
+                MessageBox.Show("Please enter the Section Name", warning, mbb, mbi);
+                return;
+            }
+            if (textBox8.Text.Trim() == string.Empty)
+            {
+                MessageBox.Show("Please enter the Choice Name", warning, mbb, mbi);
                 return;
             }
 
+
             string gameid = textBox1.Text;
-            string rgp = textBox2.Text;
-            string on = textBox3.Text;
-            string pid = textBox4.Text;
-            string fp = textBox5.Text;
-            Classes.XML_Generator.Generate(gameid, rgp, on, pid, fp);
+            string localize = textBox2.Text;
+            string optionname = textBox3.Text;
+            string patchid = textBox4.Text;
+            string folderpath = textBox5.Text;
+            string region = textBox6.Text;
+            string sectionname = textBox7.Text;
+            string choicename = textBox8.Text;
+            string[] comboBox1 = new string[]
+            {
+                "Yes",
+                "No"
+            };
+            string[] comboBox2 = new string[]
+            {
+                "Yes",
+                "No"
+            };
+            string[] comboBox3 = new string[]
+            {
+                "Clone SaveGame",
+                "Don't Clone SaveGame",
+                "No Custom Save"
+            };
+            string[] comboBox4 = new string[]
+            {
+                "Yes",
+                "No"
+            };
+            string[] comboBox5 = new string[]
+            {
+                "Yes",
+                "No"
+            };
+            string[] comboBox6 = new string[]
+            {
+                "Yes",
+                "No"
+            };
+            Classes.XML_Generator.Generate(gameid, localize, optionname, patchid, folderpath, region, sectionname, choicename);
             MessageBox.Show("Finshed! Press ok to exit.", "Complete",MessageBoxButtons.OK,MessageBoxIcon.Information);
             Close();
         }
