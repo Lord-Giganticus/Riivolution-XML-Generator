@@ -72,11 +72,6 @@ namespace XMLUtil
             Patches.ForEach(x => Document.ChildNodes[0].AppendChild(x.ToElement(ref Document)));
         }
 
-        public XmlElement[] GetPatchElements()
-        {
-            return Document.ChildNodes[0].ChildNodes.Cast<XmlElement>().
-                Where(x => x.Name is "patch").ToArray();
-        }
         /// <summary>
         /// <inheritdoc cref="object.ToString"/>
         /// </summary>
