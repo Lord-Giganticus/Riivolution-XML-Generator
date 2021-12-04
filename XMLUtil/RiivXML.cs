@@ -14,6 +14,8 @@ namespace XMLUtil
 
         public List<Patch> Patches { get; internal set; }
 
+        internal bool tostringcalled = false;
+
         public RiivXML()
         {
             Document = new XmlDocument();
@@ -66,23 +68,19 @@ namespace XMLUtil
             return Patches.Last();
         }
 
-        public void UpdateDocument()
+        
+        public override string ToString()
         {
-            Document.ChildNodes[0].AppendChild(options.ToElement(ref Document));
-            Patches.ForEach(x => Document.ChildNodes[0].AppendChild(x.ToElement(ref Document)));
-        }
-
-        /// <summary>
-        /// <inheritdoc cref="object.ToString"/>
-        /// </summary>
-        public string ToString(bool update = false)
-        {
-            if (update)
-                UpdateDocument();
+            if (!tostringcalled)
+            {
+                Document.ChildNodes[0].AppendChild(options.ToElement(ref Document));
+                Patches.ForEach(x => Document.ChildNodes[0].AppendChild(x.ToElement(ref Document)));
+            }
             var res = Document.Beautify();
             var lines = res.Split(new string[] { Environment.NewLine }, 0).ToList();
             lines.RemoveAt(0);
             res = string.Join(Environment.NewLine, lines);
+            tostringcalled = true;
             return res;
         }
 
