@@ -18,6 +18,9 @@
 		<GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 	</PropertyGroup>
 	<ItemGroup>
+	  <ProjectReference Include="..\XMLUtil\XMLUtil.csproj" />
+	</ItemGroup>
+	<ItemGroup>
 	  <Compile Update="Properties\Resources.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>

@@ -1,6 +1,8 @@
 ﻿using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using XMLUtil;
+using System;
 
 namespace Riivolution_XML_Generator.Classes
 {
@@ -59,7 +61,7 @@ namespace Riivolution_XML_Generator.Classes
                 "\t</patch>",
                 "</wiidisc>"
             };
-            SaveFileDialog saveDialog = new SaveFileDialog
+            SaveFileDialog saveDialog = new()
             {
                 InitialDirectory = Drive_Check.Check(),
                 FileName = Game_ID,
@@ -76,6 +78,68 @@ namespace Riivolution_XML_Generator.Classes
                 File.WriteAllLines(fileName, lines, Encoding.UTF8);
             }
             return;
+        }
+
+        public static void Generate(in Main main)
+        {
+            var riiv = new RiivXML();
+            riiv.SetNameAndRegions(main.GameTextBox.Text);
+            var section = riiv.options.CreateSection(main.SaveDataComboBox.Text);
+            var option = section.CreateOption(main.OptionTextBox.Text);
+            var choice = option.CreateChoice(main.ChoiceTextBox.Text);
+            choice.Patches.Add(main.PatchTextBox.Text);
+            var patch = riiv.CreatePatch(main.PatchTextBox.Text, main.FolderTextBox.Text);
+            if (main.SaveDataComboBox.SelectedItem is string str)
+            {
+                if (str is not "No Custom Save")
+                {
+                    bool clone = default;
+                    if (str is "Clone")
+                    {
+                        clone = true;
+                    } else if (str is "Don't Clone")
+                    {
+                        clone = false;
+                    }
+                    patch.CreateSaveGamePatch("SaveGame/{$__gameid}{$__region}{$__maker}", clone);
+                }
+            }
+            if ((bool)main.ObjectDataComboBox.SelectedItem)
+            {
+                patch.CreateFolderPatch($"{main.PatchTextBox.Text}/ObjectData", "/ObjectData", true, true);
+            }
+            if ((bool)main.StageDataComboBox.SelectedItem)
+            {
+                patch.CreateFolderPatch($"{main.PatchTextBox.Text}/StageData", "/StageData", true, true);
+            }
+            if ((bool)main.LayoutComboBox.SelectedItem)
+            {
+                patch.CreateFolderPatch($"{main.PatchTextBox.Text}/LayoutData", "/LayoutData", true, true);
+            }
+            if ((bool)main.AudioResComboBox.SelectedItem)
+            {
+                patch.CreateFolderPatch($"{main.PatchTextBox.Text}/AudioRes", "/AudioRes", true, true);
+            }
+            if ((bool)main.CustomMessageComboBox.SelectedItem)
+            {
+                patch.CreateFolderPatch($"{main.PatchTextBox.Text}/{main.LanguageTextBox.Text}", $"/{main.LanguageTextBox.Text}", true, true);
+            }
+            SaveFileDialog saveDialog = new()
+            {
+                InitialDirectory = Drive_Check.Check(),
+                FileName = $"{main.GameTextBox.Text}{Extensions.TryParse<RiivXML.Region>(main.RegionComboBox.SelectedItem)}",
+                DefaultExt = ".xml",
+                Filter = "Riivolution XML file|*.xml",
+                FilterIndex = 1,
+                CheckPathExists = true,
+                Title = "Save the new xml file"
+            };
+            DialogResult result = saveDialog.ShowDialog();
+            if (result is DialogResult.OK)
+            {
+                var res = riiv.ToString();
+                File.WriteAllText(saveDialog.FileName, res);
+            }
         }
     }
 }

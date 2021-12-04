@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
+using XMLUtil;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Riivolution_XML_Generator
 {
@@ -9,6 +12,44 @@ namespace Riivolution_XML_Generator
         {
             InitializeComponent();
             CenterToScreen();
+            SaveDataComboBox.DataSource = new string[]
+            {
+                "Clone",
+                "Don't Clone",
+                "No Custom Save"
+            };
+            ObjectDataComboBox.DataSource = new bool[]
+            {
+                false,
+                true
+            };
+            StageDataComboBox.DataSource = new bool[]
+            {
+                false,
+                true
+            };
+            LayoutComboBox.DataSource = new bool[]
+            {
+                false,
+                true
+            };
+            AudioResComboBox.DataSource = new bool[]
+            {
+                false,
+                true
+            };
+            CustomMessageComboBox.DataSource = new bool[]
+            {
+                false,
+                true
+            };
+            var regions = Extensions.GetEnumValues<RiivXML.Region>().ToList();
+            var strings = new List<string>
+            {
+                "None"
+            };
+            regions.ForEach(x => strings.Add(x.ToString()));
+            RegionComboBox.DataSource = strings;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -16,88 +57,53 @@ namespace Riivolution_XML_Generator
             MessageBoxButtons mbb = MessageBoxButtons.OK;
             MessageBoxIcon mbi = MessageBoxIcon.Warning;
             string warning = "Warning";
-            if (textBox1.Text.Trim() == string.Empty)
+            if (GameTextBox.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("Please enter the Game ID!", warning, mbb, mbi);
                 return;
             }
-            if (textBox2.Text.Trim() == string.Empty)
+            if (LanguageTextBox.Text.Trim() == string.Empty)
             {
                 //MessageBox.Show("Please enter the Riivolution Page name!",warning,mbb,mbi);
                 //return;
             }
-            if (textBox3.Text.Trim() == string.Empty)
+            if (OptionTextBox.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("Please enter the Option name!", warning, mbb, mbi);
                 return;
             }
-            if (textBox4.Text.Trim() == string.Empty)
+            if (PatchTextBox.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("Please enter the Patch ID!", warning, mbb, mbi);
                 return;
             }
-            if (textBox5.Text.Trim() == string.Empty)
+            if (FolderTextBox.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("Please enter the Folder Path!", warning, mbb, mbi);
                 return;
             }
-            if (textBox6.Text.Trim() == string.Empty)
-            {
-                MessageBox.Show("Please enter the Game Region", warning, mbb, mbi);
-                return;
-            }
-            if (textBox7.Text.Trim() == string.Empty)
+            if (SectionTextBox.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("Please enter the Section Name", warning, mbb, mbi);
                 return;
             }
-            if (textBox8.Text.Trim() == string.Empty)
+            if (ChoiceTextBox.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("Please enter the Choice Name", warning, mbb, mbi);
                 return;
             }
 
 
-            string gameid = textBox1.Text;
-            string localize = textBox2.Text;
-            string optionname = textBox3.Text;
-            string patchid = textBox4.Text;
-            string folderpath = textBox5.Text;
-            string region = textBox6.Text;
-            string sectionname = textBox7.Text;
-            string choicename = textBox8.Text;
-            string[] comboBox1 = new string[]
-            {
-                "Yes",
-                "No"
-            };
-            string[] comboBox2 = new string[]
-            {
-                "Yes",
-                "No"
-            };
-            string[] comboBox3 = new string[]
-            {
-                "Clone SaveGame",
-                "Don't Clone SaveGame",
-                "No Custom Save"
-            };
-            string[] comboBox4 = new string[]
-            {
-                "Yes",
-                "No"
-            };
-            string[] comboBox5 = new string[]
-            {
-                "Yes",
-                "No"
-            };
-            string[] comboBox6 = new string[]
-            {
-                "Yes",
-                "No"
-            };
-            Classes.XML_Generator.Generate(gameid, localize, optionname, patchid, folderpath, region, sectionname, choicename);
+            string gameid = GameTextBox.Text;
+            string localize = LanguageTextBox.Text;
+            string optionname = OptionTextBox.Text;
+            string patchid = PatchTextBox.Text;
+            string folderpath = FolderTextBox.Text;
+            string region = Extensions.TryParse<RiivXML.Region>(RegionComboBox.SelectedItem).ToString();
+            string sectionname = SectionTextBox.Text;
+            string choicename = ChoiceTextBox.Text;
+            //Classes.XML_Generator.Generate(gameid, localize, optionname, patchid, folderpath, region, sectionname, choicename);
+            Classes.XML_Generator.Generate(this);
             MessageBox.Show("Finshed! Press ok to exit.", "Complete",MessageBoxButtons.OK,MessageBoxIcon.Information);
             Close();
         }

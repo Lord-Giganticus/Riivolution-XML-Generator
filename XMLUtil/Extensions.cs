@@ -31,5 +31,18 @@ namespace XMLUtil
             else
                 return (T[])Enum.GetValues(typeof(T));
         }
+
+        public static T TryParse<T>(object obj) where T : struct
+        {
+            T res = default;
+            if (!typeof(T).IsEnum)
+                throw new ArgumentException("Type is not a Enum.");
+            foreach (var e in GetEnumValues<T>())
+            {
+                if (e.ToString() == obj.ToString())
+                    res = e;
+            }
+            return res;
+        }
     }
 }

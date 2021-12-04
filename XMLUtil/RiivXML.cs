@@ -35,9 +35,7 @@ namespace XMLUtil
         {
             var node = Document.ChildNodes[0];
             var innernode = Document.CreateElement("id");
-            var attribute = Document.CreateAttribute("game");
-            attribute.Value = name;
-            innernode.Attributes.Append(attribute);
+            innernode.SetAttribute("game", name);
             node.AppendChild(innernode);
         }
 

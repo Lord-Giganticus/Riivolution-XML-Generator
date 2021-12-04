@@ -31,36 +31,36 @@ namespace Riivolution_XML_Generator
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.GameTextBox = new System.Windows.Forms.TextBox();
+            this.LanguageTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.OptionTextBox = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.PatchTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.FolderTextBox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.SectionTextBox = new System.Windows.Forms.TextBox();
+            this.ChoiceTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.StageDataComboBox = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.ObjectDataComboBox = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.SaveDataComboBox = new System.Windows.Forms.ComboBox();
+            this.LayoutComboBox = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.AudioResComboBox = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.CustomMessageComboBox = new System.Windows.Forms.ComboBox();
+            this.RegionComboBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,21 +73,21 @@ namespace Riivolution_XML_Generator
             this.label2.TabIndex = 2;
             this.label2.Text = "The games ID:";
             // 
-            // textBox1
+            // GameTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(74, 27);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PlaceholderText = "RMG";
-            this.textBox1.Size = new System.Drawing.Size(187, 23);
-            this.textBox1.TabIndex = 3;
+            this.GameTextBox.Location = new System.Drawing.Point(74, 27);
+            this.GameTextBox.Name = "GameTextBox";
+            this.GameTextBox.PlaceholderText = "RMG";
+            this.GameTextBox.Size = new System.Drawing.Size(187, 23);
+            this.GameTextBox.TabIndex = 3;
             // 
-            // textBox2
+            // LanguageTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(443, 301);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PlaceholderText = "UsEnglish";
-            this.textBox2.Size = new System.Drawing.Size(187, 23);
-            this.textBox2.TabIndex = 5;
+            this.LanguageTextBox.Location = new System.Drawing.Point(443, 301);
+            this.LanguageTextBox.Name = "LanguageTextBox";
+            this.LanguageTextBox.PlaceholderText = "UsEnglish";
+            this.LanguageTextBox.Size = new System.Drawing.Size(187, 23);
+            this.LanguageTextBox.TabIndex = 5;
             // 
             // label4
             // 
@@ -98,13 +98,13 @@ namespace Riivolution_XML_Generator
             this.label4.TabIndex = 6;
             this.label4.Text = "Option name:";
             // 
-            // textBox3
+            // OptionTextBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(75, 165);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.PlaceholderText = "Test Mod";
-            this.textBox3.Size = new System.Drawing.Size(187, 23);
-            this.textBox3.TabIndex = 7;
+            this.OptionTextBox.Location = new System.Drawing.Point(75, 165);
+            this.OptionTextBox.Name = "OptionTextBox";
+            this.OptionTextBox.PlaceholderText = "Test Mod";
+            this.OptionTextBox.Size = new System.Drawing.Size(187, 23);
+            this.OptionTextBox.TabIndex = 7;
             // 
             // label6
             // 
@@ -115,13 +115,13 @@ namespace Riivolution_XML_Generator
             this.label6.TabIndex = 10;
             this.label6.Text = "Patch ID:";
             // 
-            // textBox4
+            // PatchTextBox
             // 
-            this.textBox4.Location = new System.Drawing.Point(75, 253);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.PlaceholderText = "SMGT";
-            this.textBox4.Size = new System.Drawing.Size(187, 23);
-            this.textBox4.TabIndex = 11;
+            this.PatchTextBox.Location = new System.Drawing.Point(75, 253);
+            this.PatchTextBox.Name = "PatchTextBox";
+            this.PatchTextBox.PlaceholderText = "SMGT";
+            this.PatchTextBox.Size = new System.Drawing.Size(187, 23);
+            this.PatchTextBox.TabIndex = 11;
             // 
             // label7
             // 
@@ -132,13 +132,13 @@ namespace Riivolution_XML_Generator
             this.label7.TabIndex = 12;
             this.label7.Text = "Folder Path:";
             // 
-            // textBox5
+            // FolderTextBox
             // 
-            this.textBox5.Location = new System.Drawing.Point(75, 297);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.PlaceholderText = "/SMGTesting";
-            this.textBox5.Size = new System.Drawing.Size(187, 23);
-            this.textBox5.TabIndex = 13;
+            this.FolderTextBox.Location = new System.Drawing.Point(75, 297);
+            this.FolderTextBox.Name = "FolderTextBox";
+            this.FolderTextBox.PlaceholderText = "/SMGTesting";
+            this.FolderTextBox.Size = new System.Drawing.Size(187, 23);
+            this.FolderTextBox.TabIndex = 13;
             // 
             // button1
             // 
@@ -177,14 +177,6 @@ namespace Riivolution_XML_Generator
             this.label1.TabIndex = 17;
             this.label1.Text = "Region";
             // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(74, 74);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.PlaceholderText = "E";
-            this.textBox6.Size = new System.Drawing.Size(187, 23);
-            this.textBox6.TabIndex = 18;
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -194,21 +186,21 @@ namespace Riivolution_XML_Generator
             this.label8.TabIndex = 19;
             this.label8.Text = "Section Name";
             // 
-            // textBox7
+            // SectionTextBox
             // 
-            this.textBox7.Location = new System.Drawing.Point(74, 118);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.PlaceholderText = "SMG Testing";
-            this.textBox7.Size = new System.Drawing.Size(187, 23);
-            this.textBox7.TabIndex = 20;
+            this.SectionTextBox.Location = new System.Drawing.Point(74, 118);
+            this.SectionTextBox.Name = "SectionTextBox";
+            this.SectionTextBox.PlaceholderText = "SMG Testing";
+            this.SectionTextBox.Size = new System.Drawing.Size(187, 23);
+            this.SectionTextBox.TabIndex = 20;
             // 
-            // textBox8
+            // ChoiceTextBox
             // 
-            this.textBox8.Location = new System.Drawing.Point(75, 209);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.PlaceholderText = "Enabled";
-            this.textBox8.Size = new System.Drawing.Size(187, 23);
-            this.textBox8.TabIndex = 21;
+            this.ChoiceTextBox.Location = new System.Drawing.Point(75, 209);
+            this.ChoiceTextBox.Name = "ChoiceTextBox";
+            this.ChoiceTextBox.PlaceholderText = "Enabled";
+            this.ChoiceTextBox.Size = new System.Drawing.Size(187, 23);
+            this.ChoiceTextBox.TabIndex = 21;
             // 
             // label9
             // 
@@ -237,14 +229,14 @@ namespace Riivolution_XML_Generator
             this.label10.TabIndex = 23;
             this.label10.Text = "Is StageData edited?";
             // 
-            // comboBox1
+            // StageDataComboBox
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(443, 118);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(187, 23);
-            this.comboBox1.TabIndex = 24;
+            this.StageDataComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.StageDataComboBox.FormattingEnabled = true;
+            this.StageDataComboBox.Location = new System.Drawing.Point(443, 118);
+            this.StageDataComboBox.Name = "StageDataComboBox";
+            this.StageDataComboBox.Size = new System.Drawing.Size(187, 23);
+            this.StageDataComboBox.TabIndex = 24;
             // 
             // label11
             // 
@@ -264,14 +256,14 @@ namespace Riivolution_XML_Generator
             this.label12.TabIndex = 26;
             this.label12.Text = "Is LayoutData edited?";
             // 
-            // comboBox2
+            // ObjectDataComboBox
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(443, 74);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(187, 23);
-            this.comboBox2.TabIndex = 27;
+            this.ObjectDataComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ObjectDataComboBox.FormattingEnabled = true;
+            this.ObjectDataComboBox.Location = new System.Drawing.Point(443, 74);
+            this.ObjectDataComboBox.Name = "ObjectDataComboBox";
+            this.ObjectDataComboBox.Size = new System.Drawing.Size(187, 23);
+            this.ObjectDataComboBox.TabIndex = 27;
             // 
             // label13
             // 
@@ -282,23 +274,23 @@ namespace Riivolution_XML_Generator
             this.label13.TabIndex = 28;
             this.label13.Text = "Save Data Settings:";
             // 
-            // comboBox3
+            // SaveDataComboBox
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(443, 27);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(187, 23);
-            this.comboBox3.TabIndex = 29;
+            this.SaveDataComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SaveDataComboBox.FormattingEnabled = true;
+            this.SaveDataComboBox.Location = new System.Drawing.Point(443, 27);
+            this.SaveDataComboBox.Name = "SaveDataComboBox";
+            this.SaveDataComboBox.Size = new System.Drawing.Size(187, 23);
+            this.SaveDataComboBox.TabIndex = 29;
             // 
-            // comboBox4
+            // LayoutComboBox
             // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(443, 165);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(187, 23);
-            this.comboBox4.TabIndex = 30;
+            this.LayoutComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LayoutComboBox.FormattingEnabled = true;
+            this.LayoutComboBox.Location = new System.Drawing.Point(443, 165);
+            this.LayoutComboBox.Name = "LayoutComboBox";
+            this.LayoutComboBox.Size = new System.Drawing.Size(187, 23);
+            this.LayoutComboBox.TabIndex = 30;
             // 
             // label14
             // 
@@ -309,14 +301,14 @@ namespace Riivolution_XML_Generator
             this.label14.TabIndex = 31;
             this.label14.Text = "Is AudioRes edited?";
             // 
-            // comboBox5
+            // AudioResComboBox
             // 
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(443, 209);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(187, 23);
-            this.comboBox5.TabIndex = 32;
+            this.AudioResComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.AudioResComboBox.FormattingEnabled = true;
+            this.AudioResComboBox.Location = new System.Drawing.Point(443, 209);
+            this.AudioResComboBox.Name = "AudioResComboBox";
+            this.AudioResComboBox.Size = new System.Drawing.Size(187, 23);
+            this.AudioResComboBox.TabIndex = 32;
             // 
             // label15
             // 
@@ -327,50 +319,59 @@ namespace Riivolution_XML_Generator
             this.label15.TabIndex = 33;
             this.label15.Text = "Is there Custom Messages?";
             // 
-            // comboBox6
+            // CustomMessageComboBox
             // 
-            this.comboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(443, 253);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(187, 23);
-            this.comboBox6.TabIndex = 34;
+            this.CustomMessageComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CustomMessageComboBox.FormattingEnabled = true;
+            this.CustomMessageComboBox.Location = new System.Drawing.Point(443, 253);
+            this.CustomMessageComboBox.Name = "CustomMessageComboBox";
+            this.CustomMessageComboBox.Size = new System.Drawing.Size(187, 23);
+            this.CustomMessageComboBox.TabIndex = 34;
+            // 
+            // RegionComboBox
+            // 
+            this.RegionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.RegionComboBox.FormattingEnabled = true;
+            this.RegionComboBox.Location = new System.Drawing.Point(72, 74);
+            this.RegionComboBox.Name = "RegionComboBox";
+            this.RegionComboBox.Size = new System.Drawing.Size(189, 23);
+            this.RegionComboBox.TabIndex = 35;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(707, 336);
-            this.Controls.Add(this.comboBox6);
+            this.Controls.Add(this.RegionComboBox);
+            this.Controls.Add(this.CustomMessageComboBox);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.comboBox5);
+            this.Controls.Add(this.AudioResComboBox);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.comboBox4);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.LayoutComboBox);
+            this.Controls.Add(this.SaveDataComboBox);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.ObjectDataComboBox);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.StageDataComboBox);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.ChoiceTextBox);
+            this.Controls.Add(this.SectionTextBox);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.FolderTextBox);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.PatchTextBox);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.OptionTextBox);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.LanguageTextBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.GameTextBox);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -388,36 +389,36 @@ namespace Riivolution_XML_Generator
 
         #endregion
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox comboBox6;
+        internal System.Windows.Forms.TextBox GameTextBox;
+        internal System.Windows.Forms.TextBox LanguageTextBox;
+        internal System.Windows.Forms.TextBox OptionTextBox;
+        internal System.Windows.Forms.TextBox PatchTextBox;
+        internal System.Windows.Forms.TextBox FolderTextBox;
+        internal System.Windows.Forms.TextBox SectionTextBox;
+        internal System.Windows.Forms.TextBox ChoiceTextBox;
+        internal System.Windows.Forms.ComboBox StageDataComboBox;
+        internal System.Windows.Forms.ComboBox ObjectDataComboBox;
+        internal System.Windows.Forms.ComboBox SaveDataComboBox;
+        internal System.Windows.Forms.ComboBox LayoutComboBox;
+        internal System.Windows.Forms.ComboBox AudioResComboBox;
+        internal System.Windows.Forms.ComboBox CustomMessageComboBox;
+        internal System.Windows.Forms.ComboBox RegionComboBox;
     }
 }
 
