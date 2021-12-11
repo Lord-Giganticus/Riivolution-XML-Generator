@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 using System.Xml;
 
@@ -65,7 +64,6 @@ namespace XMLUtil
             });
             return Patches.Last();
         }
-
         
         public override string ToString()
         {
@@ -290,7 +288,6 @@ namespace XMLUtil
                 return node;
             }
         }
-
         public struct FolderPatch
         {
             public bool? Recursive;
