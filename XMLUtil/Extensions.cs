@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Xml;
 using System.Text;
+using System.Runtime.InteropServices;
 
 namespace XMLUtil
 {
@@ -43,5 +44,22 @@ namespace XMLUtil
             }
             return res;
         }
+
+        internal static byte[] ToBytes<T>(this T data) where T : struct
+        {
+            var size = Marshal.SizeOf(data);
+            var bytes = new byte[size];
+            var ptr = Marshal.UnsafeAddrOfPinnedArrayElement(bytes, 0);
+            Marshal.StructureToPtr(data, ptr, true);
+            return bytes;
+        }
+
+        internal static T ToStruct<T>(this byte[] data) where T : struct
+        {
+            var ptr = Marshal.UnsafeAddrOfPinnedArrayElement(data, 0);
+            return Marshal.PtrToStructure<T>(ptr);
+        }
+
+        internal static int SizeOf<T>(this T src) where T : struct => Marshal.SizeOf(src);
     }
 }

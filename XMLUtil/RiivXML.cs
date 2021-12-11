@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Xml;
+using System.Runtime.InteropServices;
+using System.IO;
 
 namespace XMLUtil
 {
@@ -80,6 +82,50 @@ namespace XMLUtil
             return res;
         }
 
+        public byte[] ToBytes()
+        {
+            using (var mem = new MemoryStream())
+            {
+                using (var writer = new BinaryWriter(mem))
+                {
+                    var buf = options.ToBytes();
+                    writer.Write(buf.Length);
+                    writer.Write(buf);
+                    writer.Write(Patches.Count);
+                    foreach (var patch in Patches)
+                    {
+                        buf = patch.ToBytes();
+                        writer.Write(buf.Length);
+                        writer.Write(buf);
+                    }
+                    writer.Flush();
+                    return mem.ToArray();
+                }
+            }
+        }
+
+        public static RiivXML FromBytes(byte[] src)
+        {
+            using (var mem = new MemoryStream(src))
+            {
+                using (var reader = new BinaryReader(mem))
+                {
+                    RiivXML res = new RiivXML();
+                    var len = reader.ReadInt32();
+                    var buf = reader.ReadBytes(len);
+                    res.options = Options.FromBytes(buf);
+                    var count = reader.ReadInt32();
+                    for (int i = 0; i < count; i++)
+                    {
+                        len = reader.ReadInt32();
+                        buf = reader.ReadBytes(len);
+                        res.Patches.Add(Patch.FromBytes(buf));
+                    }
+                    return res;
+                }
+            }
+        }
+
         #region Sub Types
         #region Options
         public struct Options
@@ -124,6 +170,91 @@ namespace XMLUtil
                     Name = name
                 });
                 return Sections.Last();
+            }
+
+            public byte[] ToBytes()
+            {
+                using (var mem = new MemoryStream())
+                {
+                    using (var writer = new BinaryWriter(mem))
+                    {
+                        writer.Write(Sections.Count);
+                        foreach (var section in Sections)
+                        {
+                            var name = section.Name;
+                            writer.Write(name.Length);
+                            writer.Write(name.ToCharArray());
+                            var options = section.Options;
+                            writer.Write(options.Count);
+                            foreach (var option in options)
+                            {
+                                name = option.Name;
+                                writer.Write(name.Length);
+                                writer.Write(name.ToCharArray());
+                                var choices = option.Choices;
+                                writer.Write(choices.Count);
+                                foreach (var choice in choices)
+                                {
+                                    name = choice.Name;
+                                    writer.Write(name.Length);
+                                    writer.Write(name.ToCharArray());
+                                    var patches = choice.Patches;
+                                    writer.Write(patches.Count);
+                                    foreach (var patch in patches)
+                                    {
+                                        writer.Write(patch.Length);
+                                        writer.Write(patch.ToCharArray());
+                                    }
+                                }
+                            }
+                        }
+                        writer.Flush();
+                        return mem.ToArray();
+                    }
+                }
+            }
+
+            public static Options FromBytes(byte[] src)
+            {
+                using (var mem = new MemoryStream(src))
+                {
+                    using (var reader = new BinaryReader(mem))
+                    {
+                        var res = new Options
+                        {
+                            Sections = new List<Section>()
+                        };
+                        var sections = reader.ReadInt32();
+                        for (int s = 0; s < sections; s++)
+                        {
+                            var len = reader.ReadInt32();
+                            var name = new string(reader.ReadChars(len));
+                            var section = res.CreateSection(name);
+                            var sectioncount = reader.ReadInt32();
+                            for (int se = 0; se < sectioncount; se++)
+                            {
+                                len = reader.ReadInt32();
+                                name = new string(reader.ReadChars(len));
+                                var option = section.CreateOption(name);
+                                var optioncount = reader.ReadInt32();
+                                for (int o = 0; o < optioncount; o++)
+                                {
+                                    len = reader.ReadInt32();
+                                    name = new string(reader.ReadChars(len));
+                                    var choice = option.CreateChoice(name);
+                                    var choicecount = reader.ReadInt32();
+                                    for (int c = 0; c < choicecount; c++)
+                                    {
+                                        len = reader.ReadInt32();
+                                        name = new string(reader.ReadChars(len));
+                                        choice.Patches.Add(name);
+                                    }
+                                }
+                            }
+                        }
+                        return res;
+                    }
+                }
             }
         }
 
@@ -286,6 +417,98 @@ namespace XMLUtil
                     node.AppendChild(m);
                 }
                 return node;
+            }
+
+            public byte[] ToBytes()
+            {
+                using (var mem = new MemoryStream())
+                {
+                    using (var writer = new BinaryWriter(mem))
+                    {
+                        writer.Write(Name.Length);
+                        writer.Write(Name.ToCharArray());
+                        var check = string.IsNullOrWhiteSpace(RootFile);
+                        writer.Write(check);
+                        if (!check)
+                        {
+                            writer.Write(RootFile.Length);
+                            writer.Write(RootFile.ToCharArray());
+                        }
+                        void write<T>(T src) where T : struct
+                        {
+                            writer.Write(src.SizeOf());
+                            writer.Write(src.ToBytes());
+                        }
+                        writer.Write(SaveGamePatches.Count);
+                        SaveGamePatches.ForEach(write);
+                        writer.Write(FolderPatches.Count);
+                        FolderPatches.ForEach(write);
+                        writer.Write(MemoryPatches.Count);
+                        MemoryPatches.ForEach(write);
+                        writer.Flush();
+                        return mem.ToArray();
+                    }
+                }
+            }
+
+            public static Patch FromBytes(byte[] src)
+            {
+                using (var mem = new MemoryStream(src))
+                {
+                    using (var reader = new BinaryReader(mem))
+                    {
+                        var len = reader.ReadInt32();
+                        var name = new string(reader.ReadChars(len));
+                        var choice = reader.ReadBoolean();
+                        Patch res;
+                        if (!choice)
+                        {
+                            len = reader.ReadInt32();
+                            var rootfile = new string(reader.ReadChars(len));
+                            res = new Patch
+                            {
+                                Name = name,
+                                RootFile = rootfile,
+                                SaveGamePatches = new List<SaveGamePatch>(),
+                                FolderPatches = new List<FolderPatch>(),
+                                MemoryPatches = new List<MemoryPatch>()
+                            };
+                        } else
+                        {
+                            res = new Patch
+                            {
+                                Name = name,
+                                RootFile = null,
+                                SaveGamePatches = new List<SaveGamePatch>(),
+                                FolderPatches = new List<FolderPatch>(),
+                                MemoryPatches = new List<MemoryPatch>()
+                            };
+                        }
+                        int count = reader.ReadInt32();
+                        int i;
+                        for (i = 0; i < count; i++)
+                        {
+                            len = reader.ReadInt32();
+                            var buf = reader.ReadBytes(len);
+                            res.SaveGamePatches.Add(buf.ToStruct<SaveGamePatch>());
+                        }
+                        count = reader.ReadInt32();
+                        for (i = 0; i < count; i++)
+                        {
+                            len = reader.ReadInt32();
+                            var buf = reader.ReadBytes(len);
+                            res.FolderPatches.Add(buf.ToStruct<FolderPatch>());
+                        }
+                        count = reader.ReadInt32();
+                        for (i = 0; i < count; i++)
+                        {
+                            len = reader.ReadInt32();
+                            var buf = reader.ReadBytes(len);
+                            res.MemoryPatches.Add(buf.ToStruct<MemoryPatch>());
+                        }
+                        return res;
+                    }
+                }
             }
         }
         public struct FolderPatch
