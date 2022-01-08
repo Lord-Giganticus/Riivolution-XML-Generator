@@ -21,27 +21,21 @@ namespace Riivolution_XML_Generator.Classes
                 try
                 {
                     Directory.SetCurrentDirectory(d);
-                    goto Check;
+                    if (Directory.Exists("riivolution"))
+                    {
+                        folder = d + "riivolution";
+                        Directory.SetCurrentDirectory(starting_point);
+                        break;
+                    }
                 } catch
                 {
-                    goto loop;
-                }
-            Check:
-                if (Directory.Exists("riivolution"))
-                {
-                    folder = d + "riivolution";
-                    Directory.SetCurrentDirectory(starting_point);
-                    break;
-                }
-            loop:;
+                    continue;
+                } 
             }
-            if (!folder.EndsWith("riivolution"))
+            if (!folder.EndsWith("riivolution") || string.IsNullOrWhiteSpace(folder))
             {
                 folder = starting_point;
-            } else
-            {
-                folder = Directory.GetCurrentDirectory();
-            }
+            } 
             return folder;
         }
     }

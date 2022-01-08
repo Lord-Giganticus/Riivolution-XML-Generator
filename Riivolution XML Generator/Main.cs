@@ -104,8 +104,7 @@ namespace Riivolution_XML_Generator
             string choicename = ChoiceTextBox.Text;
             //Classes.XML_Generator.Generate(gameid, localize, optionname, patchid, folderpath, region, sectionname, choicename);
             Classes.XML_Generator.Generate(this);
-            MessageBox.Show("Finshed! Press ok to exit.", "Complete",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            Close();
+            MessageBox.Show("Finshed!", "Complete",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         private void Form1_Load(object sender, EventArgs e)

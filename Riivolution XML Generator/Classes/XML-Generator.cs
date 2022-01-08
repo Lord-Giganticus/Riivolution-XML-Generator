@@ -84,7 +84,7 @@ namespace Riivolution_XML_Generator.Classes
         {
             var riiv = new RiivXML();
             riiv.SetNameAndRegions(main.GameTextBox.Text);
-            var section = riiv.options.CreateSection(main.SaveDataComboBox.Text);
+            var section = riiv.Options.CreateSection(main.SaveDataComboBox.Text);
             var option = section.CreateOption(main.OptionTextBox.Text);
             var choice = option.CreateChoice(main.ChoiceTextBox.Text);
             choice.Patches.Add(main.PatchTextBox.Text);

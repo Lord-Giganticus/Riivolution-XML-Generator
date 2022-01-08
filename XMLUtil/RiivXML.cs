@@ -5,11 +5,14 @@ using System.Xml;
 using System.Runtime.InteropServices;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Diagnostics;
 
 namespace XMLUtil
 {
+    [DebuggerDisplay("Riivolution XML")]
     public sealed class RiivXML
     {
+        [DebuggerBrowsable(DebuggerBrowsableState.Never)]
         private readonly XmlDocument Document;
 
         public RiivOptions Options { get; internal set; }
@@ -34,23 +37,29 @@ namespace XMLUtil
         public void SetName(string name)
         {
             var node = Document.ChildNodes[0];
-            var innernode = Document.CreateElement("id");
-            innernode.SetAttribute("game", name);
-            node.AppendChild(innernode);
+            if (node["id"] is null)
+            {
+                var innernode = Document.CreateElement("id");
+                innernode.SetAttribute("game", name);
+                node.AppendChild(innernode);
+            }
         }
 
         public void SetNameAndRegions(string name)
         {
             var node = Document.ChildNodes[0];
-            var game = Document.CreateElement("id");
-            game.SetAttribute("game", name);
-            foreach (var region in Extensions.GetEnumValues<Region>())
+            if (node["id"] is null)
             {
-                var innernode = Document.CreateElement("region");
-                innernode.SetAttribute("type", region.ToString());
-                game.AppendChild(innernode);
+                var game = Document.CreateElement("id");
+                game.SetAttribute("game", name);
+                foreach (var region in Extensions.GetEnumValues<Region>())
+                {
+                    var innernode = Document.CreateElement("region");
+                    innernode.SetAttribute("type", region.ToString());
+                    game.AppendChild(innernode);
+                }
+                node.AppendChild(game);
             }
-            node.AppendChild(game);
         }
 
         public Patch CreatePatch(string name, string rootfile = null)
@@ -79,20 +88,17 @@ namespace XMLUtil
             return res;
         }
 
-        public unsafe byte[] ToBytes()
+        public byte[] ToBytes()
         {
             var size = Unsafe.SizeOf<RiivXML>();
-            var bytes = new byte[size];
-            var xml = this;
-            Marshal.Copy((IntPtr)Unsafe.AsPointer(ref xml), bytes, 0, size);
+            byte[] bytes = new byte[size];
+            Unsafe.WriteUnaligned(ref bytes[0], this);
             return bytes;
         }
 
-        public unsafe static RiivXML FromBytes(byte[] src)
+        public static RiivXML FromBytes(byte[] src)
         {
-            RiivXML res = new RiivXML();
-            Unsafe.Copy(ref res, (void*)Marshal.UnsafeAddrOfPinnedArrayElement(src, 0));
-            return res;
+            return Unsafe.ReadUnaligned<RiivXML>(ref src[0]);
         }
 
         #region Sub Types
